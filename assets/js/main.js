@@ -46,9 +46,18 @@ const contactForm = document.getElementById('contact-form'),
 const sendEmail = (e) =>{
     e.preventDefault()
     // serviceID - templateID - #form - publicKey
-    emailjs.sendForm('','')
+    emailjs.sendForm('service_gpy621k','template_nezj6kv','#contact-form','ew8a1MOxFuXVjCMhn')
+    .then(()=>{
+        contactMessage.textContent = 'Message sent successfully ✅';
+        setTimeout(() => {
+            contactMessage.textContent = ''
+        }, 5000);
+        contactForm.reset()
+    },()=>{
+        contactMessage.textContent = 'Message not sent ❌';
+    })
 }
-contactForm.addEventListener('submit', sendEmail)    
+contactForm.addEventListener('submit', sendEmail)     
 
 /*=============== SHOW SCROLL UP ===============*/ 
 const scrollUp = () =>{
